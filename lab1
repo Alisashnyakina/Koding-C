@@ -4,7 +4,8 @@ int main()
 {
     float a,b,c; 
     float x1,x2,d; 
-    
+    int x;
+    do {
     printf("Введите значение a: ");
     scanf("%f", &a);
     printf("Введите значение b: ");
@@ -12,18 +13,20 @@ int main()
     printf("Введите значение c: ");
     scanf("%f", &c);
     
-    d=b*b-4*a*c
-    if (d>0){
+    d=b*b-4*a*c;
+    if (d>0) {
         x1=(-b+sqrt(d))/(2*a);
         x1=(-b-sqrt(d))/(2*a);
         printf("Уравнение имеет два корня: x1=%f, x2=%f\n", x1,x2); 
         
     }else if (d==0) {
         x1=-b/(2*a); 
-        printf("Уравнение имеет один корень: x=%f\n",x);
+        printf("Уравнение имеет один корень: x=%f\n",x1);
     }else if (d<0) {
-        printf("У уравнение нет корней");
+        printf("У уравнение нет корней\n");
     }
-    
-    return 0;
+    printf("Для повторения нажмите 0");
+    scanf("%d", &x);
+    } while(x==0);
+return 0;
 }
