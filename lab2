@@ -12,10 +12,10 @@
 1.Объявить массив данных типа double размером 3 на 3. 
 #include <stdio.h>
 int main() {
-    double massiv[3] [3]; 
-    for (int i=0;i<3;i++) {
-        for (int j = 0; j<3;j++) {
-        massiv[i][j] = i*3+j;
+    double m [3] [3]; 
+    for (i=0;i<3;i++) {
+        for (j = 0; j<3;j++) {
+        massive[i][j] = i*3+j;
         }
     }
     for (int i=0; i<3; i++) {
@@ -45,26 +45,26 @@ for (i=0; i<3; i++) {
         
 //Вычисление суммы элементов на главной и побочной диагоналях
 for (i=0; i<3; i++) {
-mainDiagSum += massive[i] [i]; 
-sideDiagSum += massive[i] [2-i]; 
+main_sum += massive[i] [i]; 
+notmain_sum += massive[i] [2-i]; 
 }
 
 //Вывод суммы элементов на диагоналях 
-printf("Сумма элементов на главной диагонали: %lf\n", mainDiagSum); 
-printf("Сумма элементов на побочной диагонали: %lf\n", sideDiagSum); 
-int squareMassive[2] [2]; 
+printf("Сумма элементов на главной диагонали: %lf\n", main_sum); 
+printf("Сумма элементов на побочной диагонали: %lf\n", notmain_sum); 
+int twomassive[2] [2]; 
 //Ввод значений для квадратной матрицы 2х2
 printf("\nВведите значение для матрицы 2х2:\n");
 for (i=0; i<2; i++) {
      for (j=0; j<2; j++) {
-          scanf("%d", &squareMassive[i][j]); 
+          scanf("%d", &twomassive[i][j]); 
      }
 }
 //Вывод квадрата данной матрицы
 printf("Квадрат данной матрицы:\n"); 
 for (i=0; i<2; i++) {
      for (j=0; j<2; j++) {
-          printf("%d", squareMassive[i] [j] * squareMassive[i] [j]); 
+          printf("%d", twomassive[i] [j] * twomassive[i] [j]); 
            }
            printf("\n");
   }
@@ -78,3 +78,31 @@ printf("%3d", x[i][j]);
 if (i==j)sum +=x[i][j]; 
 printf("Сумма элементов на главной диагонали=%d", sum\n); 
 return 0; 
+
+
+
+Объявление массива: 
+#include <stdio.h>
+int main()
+{
+int a[3][3];\\массив состоит из 2 строк и 3 стобцов 
+int i,j;
+\\ввод элементов массива 
+for (i=0;i<2;i++)//цикл по строкам
+{
+ for (j=0; j<3;j++)\\цикл по столбцам 
+ {
+printf("a[%d][%d] = ", i,j);
+scanf("%d", &a[j]);
+\\Вывод элементов массива 
+for (i=0; i<2; i++)//цикл по строкам 
+{
+for (j=0;j<3;j++)//цикл по столбцам 
+{
+printf("%d", a[j]);
+}
+prinrf("\n"); перевод на новую строку 
+}
+getchar(); getchar(); 
+return 0; 
+} 
