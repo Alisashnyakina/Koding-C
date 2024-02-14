@@ -26,9 +26,6 @@ int main() {
 }
 */
 
-
-
-
 /*
 #include <stdio.h>
 
@@ -79,7 +76,6 @@ printf("%3d", x[i][j]);
 if (i==j)sum +=x[i][j]; 
 printf("Сумма элементов на главной диагонали=%d", sum\n); 
 return 0; 
-
 
 
 Объявление массива: 
