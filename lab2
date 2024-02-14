@@ -46,7 +46,7 @@ for (i=0; i<3; i++) {
 
 //Вычисление суммы элементов на главной и побочной диагоналях
 for (i=0; i<3; i++) {
-main_sum += massive[i] [i]; 
+main_sum += massive[i] [i];   (+= значит main_sum= main_sum + massive[i] [i])
 notmain_sum += massive[i] [2-i]; 
 }
 
