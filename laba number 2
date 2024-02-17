@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main()
+{
+    double massive [3][3];
+    int i,j; 
+    double main=0, notmain=0; 
+    printf("Введите через пробел значения для матрицы третьего порядка: \n");
+    for (i=0; i<3; i++) 
+    {
+        for(j=0;j<3;j++)
+        {
+            scanf("%lf", &massive[i][j]); 
+        }
+    }
+    for (i=0; i<3; i++)
+    {
+        main += massive [i][i]; 
+        notmain += massive [i][2-i]; 
+    }
+    printf("Сумма элементов на главной диагонали: %lf\n", main); 
+    printf("Сумма элементов на побочной диагонали: %lf\n", notmain);
+    
+
+
+    return 0;
+}
