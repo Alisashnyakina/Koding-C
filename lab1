@@ -1,32 +1,38 @@
 #include <stdio.h>
 #include <math.h>
+
 int main()
 {
     float a,b,c; 
     float x1,x2,d; 
     int x;
     do {
-    printf("Введите значение a: ");
-    scanf("%f", &a);
-    printf("Введите значение b: ");
-    scanf("%f", &b);
-    printf("Введите значение c: ");
-    scanf("%f", &c);
+        printf("Введите значение a: ");
+        scanf("%f", &a);
+        printf("Введите значение b: ");
+        scanf("%f", &b);
+        printf("Введите значение c: ");
+        scanf("%f", &c);
     
-    d=b*b-4*a*c;
-    if (d>0) {
-        x1=(-b+sqrt(d))/(2*a);
-        x1=(-b-sqrt(d))/(2*a);
-        printf("Уравнение имеет два корня: x1=%f, x2=%f\n", x1,x2); 
+        d=b*b-4*a*c;
         
-    }else if (d==0) {
-        x1=-b/(2*a); 
-        printf("Уравнение имеет один корень: x=%f\n",x1);
-    }else if (d<0) {
+        if (d>0) 
+        {
+            x1=(-b+sqrt(d))/(2*a);
+            x2=(-b-sqrt(d))/(2*a);
+            printf("Уравнение имеет два корня: x1=%f, x2=%f\n", x1,x2); 
+        }
+        else if (d==0) 
+        {
+            x1=-b/(2*a); 
+            printf("Уравнение имеет один корень: x=%f\n",x1);
+        }
+        else if (d<0) 
+        {
         printf("У уравнение нет корней\n");
-    }
-    printf("Для повторения нажмите 0");
-    scanf("%d", &x);
+        }
+        printf("Для повторения нажмите 0");
+        scanf("%d", &x);
     } while(x==0);
-return 0;
+    return 0;
 }
