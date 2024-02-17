@@ -10,41 +10,39 @@
 1.Объявить массив данных типа double размером 3 на 3 через пробел. 
 #include <stdio.h>
 int main() {
-    double massive[3][3];
-    int i, j;
-    double maindiag = 0, notmaindiag = 0;
+double massive[3][3];
+int i, j;
+double maindiag = 0, notmaindiag = 0;
 2.Ввести с консоли его значения.
-    printf("Введите значения для матрицы третьего порядка через пробел:\n");
-    for (i = 0; i < 3; i++) {
-        for (j = 0; j < 3; j++) {
-            scanf("%lf", &massive[i][j]);
+printf("Введите значения для матрицы третьего порядка через пробел:\n");
+for (i = 0; i < 3; i++) {
+    for (j = 0; j < 3; j++) {
+         scanf("%lf", &massive[i][j]);
         }
     }
 3.Вывести на консоль сумму его элементов, расположенных на главной и побочной диагонали.  
   for (i = 0; i < 3; i++) {
-        maindiag += massive[i][i];
-        notmaindiag += massive[i][2 - i];
+     maindiag += massive[i][i];
+     notmaindiag += massive[i][2 - i];
     }
   printf("Сумма элементов на главной диагонали: %lf\n", maindiag);
-    printf("Сумма элементов на побочной диагонали: %lf\n", notmaindiag);
+printf("Сумма элементов на побочной диагонали: %lf\n", notmaindiag);
 
 4.Объявить массив данных типа int размером 2 на 2.
 int matrix_sec [2][2];
-    printf("Введите значения для матрицы второго порядка:\n");
-    for (i = 0; i < 2; i++) {
-        for (j = 0; j < 2; j++) {
-            scanf("%d", &matrix_sec[i][j]);
+printf("Введите значения для матрицы второго порядка:\n");
+ for (i = 0; i < 2; i++) {
+    for (j = 0; j < 2; j++) {
+        scanf("%d", &matrix_sec[i][j]);
         }
-    }
+}
 
 5.Вывести на консоль квадрат данной матрицы. 
  printf("Квадрат матрицы второго порядка:\n");
-    for (i = 0; i < 2; i++) {
-        for (j = 0; j < 2; j++) {
-            printf("%d ", matrix_sec[i][j] * matrix_sec[i][j]);
-        }
+ for (i = 0; i < 2; i++) {
+     for (j = 0; j < 2; j++) {
+    printf("%d ", matrix_sec[i][j] * matrix_sec[i][j]);
         printf("\n");
     }
-
     return 0;
 }
