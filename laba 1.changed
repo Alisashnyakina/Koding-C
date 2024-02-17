@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    float a,b,c; 
+    float x1,x2,d; 
+    int x;
+    printf("Для начала нажмите 2");
+    scanf("%d/n", &x);
+    while(x==2) {
+        printf("Введите значение a: ");
+        scanf("%f", &a);
+        printf("Введите значение b: ");
+        scanf("%f", &b);
+        printf("Введите значение c: ");
+        scanf("%f", &c);
+    
+        d=b*b-4*a*c;
+        
+        if (d>0) 
+        {
+            x1=(-b+sqrt(d))/(2*a);
+            x2=(-b-sqrt(d))/(2*a);
+            printf("Уравнение имеет два корня: x1=%f, x2=%f\n", x1,x2); 
+        }
+        else if (d==0) 
+        {
+            x1=-b/(2*a); 
+            printf("Уравнение имеет один корень: x=%f\n",x1);
+        }
+        else if (d<0) 
+        {
+        printf("У уравнение нет корней\n");
+        }
+    }
+    return 0;
+}
