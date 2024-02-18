@@ -20,8 +20,17 @@ int main()
     }
     printf("Сумма элементов на главной диагонали: %lf\n", main); 
     printf("Сумма элементов на побочной диагонали: %lf\n", notmain);
-    
-
-
+    int matrix_sec [2][2];
+printf("Введите значения для матрицы второго порядка:\n");
+ for (i = 0; i < 2; i++) {
+    for (j = 0; j < 2; j++) {
+        scanf("%d", &matrix_sec[i][j]);
+5.Вывести на консоль квадрат данной матрицы. 
+ printf("Квадрат матрицы второго порядка:\n");
+ for (i = 0; i < 2; i++) {
+     for (j = 0; j < 2; j++) {
+    printf("%d ", matrix_sec[i][j] * matrix_sec[i][j]);
+        printf("\n");
+    }
     return 0;
 }
