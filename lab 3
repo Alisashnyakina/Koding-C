@@ -5,7 +5,12 @@
 
 
 int main() 
-  char d[81];
-  if (fgets (s,81,stdin))
-      for(int i=0;s[i];i++)
-if (s[i] == 'a', s [i]=='b')s[i]-=32; 
+  char input[81];
+  printf("Введите строку: ");
+  fgets(input, sizeof(input, stdin);
+  for (int i=0, i<strlen(input; i+){
+       if (input[i] == 'a' || input[i] == 'b') {
+           input[i]= top(input[i]); 
+printf("Результат: %s", input); 
+  return 0;
+ 
