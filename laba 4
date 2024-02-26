@@ -42,3 +42,49 @@ cout << "Area: " << s << '\n';
 }
 system("pause > nul");
 }
+
+
+
+Для треугольниика 
+#ifndef TRIANGLE_OPERATIONS_H
+#define TRIANGLE_OPERATIONS_H
+
+float calculatePerimeter(float side1, float side2, float side3);
+float calculateArea(float side1, float side2, float side3);
+
+#endif
+#include "triangle_operations.h"
+#include <math.h>
+
+float calculatePerimeter(float side1, float side2, float side3) {
+    return side1 + side2 + side3;
+}
+
+float calculateArea(float side1, float side2, float side3) {
+    float s = (side1 + side2 + side3) / 2;
+    return sqrt(s * (s - side1) * (s - side2) * (s - side3));
+}
+
+
+// main.c
+#include <stdio.h>
+#include "triangle_operations.h"
+
+int main() {
+    float side1, side2, side3;
+
+    printf("Enter the lengths of the three sides of the triangle: ");
+    scanf("%f %f %f", &side1, &side2, &side3);
+
+    if (side1 + side2 > side3 && side1 + side3 > side2 && side2 + side3 > side1) {
+        float perimeter = calculatePerimeter(side1, side2, side3);
+        float area = calculateArea(side1, side2, side3);
+
+        printf("Perimeter of the triangle: %.2f\n", perimeter);
+        printf("Area of the triangle: %.2f\n", area);
+    } else {
+        printf("Invalid input. The sum of any two sides of a triangle must be greater than the third side.\n");
+    }
+
+    return 0;
+}
