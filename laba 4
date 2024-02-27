@@ -5,45 +5,6 @@
 Выдать на консоль вычисленные с помощью написанных функций значения его периметра и площади.
 /*
 
-#include <iostream>
-#include <limits>
-#include <cmath>
-#include <cstdlib>
-using namespace std;
-double length(const char* msg) {
-cout << msg;
-double value;
-cin >> value;
-cin.ignore(numeric_limits<streamsize>::max(), '\n');
-return value;
-}
-double perimeter(const double a, const double b, const double c) {
-return a + b + c;
-}
-bool exist(const double a, const double b, const double c) {
-const auto p = perimeter(a, b, c) / 2.0;
-return p * (p - a) * (p - b) * (p - c) > 0;
-}
-double area(const double a, const double b, const double c) {
-const auto p = perimeter(a, b, c) / 2.0;
-return sqrt(p * (p - a) * (p - b) * (p - c));
-}
-int main() {
-const auto a = length("a: ");
-const auto b = length("b: ");
-const auto c = length("c: ");
-if (!exist(a, b, c)) puts("Triangle not exist!");
-else {
-cout.setf(ios::fixed);
-cout.precision(2); const auto p = perimeter(a, b, c);
-cout << "Perimeter: " << p << '\n';
-const auto s = area(a, b, c);
-cout << "Area: " << s << '\n';
-}
-system("pause > nul");
-}
-
-
 
 Для треугольниика 
 #ifndef TRIANGLE_OPERATIONS_H
