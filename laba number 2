@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main()
-{
+int main(){
     double massive [3][3];
     int i,j; 
     double main=0, notmain=0; 
@@ -30,7 +29,9 @@ printf("Введите значения для матрицы второго п�
  printf("Квадрат матрицы второго порядка:\n");
  for (i = 0; i < 2; i++) {
      for (j = 0; j < 2; j++) {
+        qw= 
           printf("%d ", matrix_sec[i][j] * matrix_sec[i][j]);
+     }
         printf("\n");
      }
     return 0;
