@@ -21,20 +21,29 @@ int main(){
     printf("Сумма элементов на побочной диагонали: %lf\n", notmain);
     
     
-    int matrix_sec [2][2];
-printf("Введите значения для матрицы второго порядка:\n");
- for (i = 0; i < 2; i++) {
-    for (j = 0; j < 2; j++) {
-        scanf("%d", &matrix_sec[i][j]);
+    
+    int matrix[2][2];
+    int square[2][2];
+
+    // Ввод значений матрицы с консоли
+    printf("Введите значения матрицы 2x2:\n");
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
     }
- }
- printf("Квадрат матрицы второго порядка:\n");
- for (i = 0; i < 2; i++) {
-     for (j = 0; j < 2; j++) {
-        for (k=0;k<2;k++) {
-          printf("%d ", matrix_sec[i][j]*matrix_sec[i][k]);
-     }
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            square[i][j] = matrix[i][0] * matrix[0][j] + matrix[i][1] * matrix[1][j];
+        }
+    }
+    printf("Квадрат матрицы:\n");
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            printf("%d ", square[i][j]);
+        }
         printf("\n");
-     }
+    }
+
     return 0;
 }
