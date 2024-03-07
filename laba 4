@@ -10,19 +10,17 @@
 #include <math.h>
 
 int main() {
-    float side_one, side_two, side_three;
-    float perimeter, s, area;
-
-    printf("Введите для сторон треугольника: ");
+    float side_one, side_two, side_three, perimeter, half_perimetr, area;
+    printf("Введите значения для трёх сторон треугольника: ");
     scanf("%f %f %f", &side_one, &side_two, &side_three);
 
     perimeter = side_one + side_two + side_three;
-    s = perimeter / 2;
-    area = sqrt(s * (s - side_one) * (s - side_two) * (s - side_three));
+    half_perimetr = perimeter / 2;
+    area = sqrt(half_perimetr * (half_perimetr - side_one) * (half_perimetr - side_two) * (half_perimetr - side_three));
 
     if (side_one + side_two > side_three && side_one + side_three > side_two && side_two + side_three > side_one) {
-        printf("Периметр треугольника: %f\n", perimeter);
-        printf("Площадь треугольника: %f\n", area);
+        printf("Периметр треугольника равен: %f\n", perimeter);
+        printf("Площадь треугольника равна: %f\n", area);
     } else {
         printf("Неравенство треугольника некорректно.\n");
     }
