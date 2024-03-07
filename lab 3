@@ -3,12 +3,12 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
+#include <ctype.h> - это заголовочный файл стандартной библиотеки языка программирования С, содержащий объявления функций для классификации и преобразования отдельных символов.
 int main() {
     char string[81]; 
     printf("Введите строку: ");
-    fgets(string, sizeof(string), stdin); 
-    for (int i = 0; i < strlen(string); i++) {
+    fgets(string, sizeof(string), stdin);     fgets(): ввод одной строки; стандартный поток ввода stdin
+    for (int i = 0; i < strlen(string); i++) {    (Функция strlen видит начало Си-строки  и начинает сначала считать количество символов (байтов, отводимых под каждый символ), этот процесс выполняется до тех пор, пока не будет достигнут завершающий нулевой символ. О)
          if (string[i] == 'a' || string[i] == 'b') {
              string[i] = toupper(string[i]); 
         }
