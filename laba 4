@@ -12,7 +12,7 @@
 int main() {
     float side_one, side_two, side_three, perimeter, half_perimetr, area;
     printf("Введите значения для трёх сторон треугольника: ");
-    scanf("%f %f %f", &side_one, &side_two, &side_three);
+    scanf("%f %f %f", &side_one, &side_two, &side_three);    (scanf(): ввод с консоли с форматированием данных)
 
     perimeter = side_one + side_two + side_three;
     half_perimetr = perimeter / 2;
