@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 int main(){
     double massive [3][3];
     int i,j; 
@@ -18,9 +17,7 @@ int main(){
         notmain += massive [i][2-i]; 
     }
     printf("Сумма элементов на главной диагонали: %lf\n", main); 
-    printf("Сумма элементов на побочной диагонали: %lf\n", notmain);
-    
-    
+    printf("Сумма элементов на побочной диагонали: %lf\n", notmain);  
     
     int matrix[2][2];
     int square[2][2];
