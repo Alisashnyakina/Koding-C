@@ -43,3 +43,65 @@ int main(){
 
     return 0;
 }
+Changed:
+#include <stdio.h>
+int main(){
+    int i,j; 
+    int N,M;
+
+    double main=0, nnotmain=0; 
+    printf("Введите количество строк: \n");
+    scanf("%d", &N);
+
+    double massive[N][N];
+    printf("Введите через пробел значения для матрицы третьего порядка: \n");
+    for (i=0; i<N; i++) 
+    {
+        for(j=0;j<N;j++)
+        {
+            scanf("%lf", &massive[i][j]); 
+        }
+    }
+    
+    for (i=0; i<N; i++) 
+    {
+        for(j=0;j<N;j++)
+        {
+            printf("%lf ", massive[i][j]); 
+        }
+        printf("\n");
+    }
+    
+    for (i=0; i<N; i++)
+    {
+        main += massive [i][i]; 
+        nnotmain = nnotmain + massive [i][N-1-i];
+    }
+    
+    printf("Сумма элементов на главной диагонали: %lf \n", main); 
+    printf("Сумма элементов на побочной диагонали: %lf  \n", nnotmain);  
+    
+    int matrix[2][2];
+    int square[2][2];
+
+    printf("Введите значения матрицы 2x2:\n");
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            square[i][j] = matrix[i][0] * matrix[0][j] + matrix[i][1] * matrix[1][j];
+        }
+    }
+    printf("Квадрат матрицы:\n");
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            printf("%d ", square[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
