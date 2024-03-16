@@ -10,17 +10,5 @@ int main() {
     printf("Введите значения для трёх сторон треугольника: ");
     scanf("%f %f %f", &side_one, &side_two, &side_three);    
 
-    perimeter = side_one + side_two + side_three;
-    half_perimetr = perimeter / 2;
-    area = sqrt(half_perimetr * (half_perimetr - side_one) * (half_perimetr - side_two) * (half_perimetr - side_three));
-
-    if (side_one + side_two > side_three && side_one + side_three > side_two && side_two + side_three > side_one) {
-        printf("Периметр треугольника равен: %f\n", perimeter);
-        printf("Площадь треугольника равна: %f\n", area);
-    } else {
-        printf("Неравенство треугольника некорректно.\n");
-    }
-
-    return 0;
-}
+    
 
