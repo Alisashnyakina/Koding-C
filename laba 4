@@ -22,6 +22,10 @@ int main(){
 
 
 
+
+
+
+
 int perim(int side1, int side2, int side3);
 double area(int side1, int side2, int side3);
 
