@@ -8,7 +8,7 @@
 
 main.c 
 #include <stdio.h>
-#include "lib.h"
+#include "mylib.h"
 
 int main(){   
     int a,b,c,p;
