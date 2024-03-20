@@ -4,7 +4,7 @@
 Выдать на консоль вычисленные с помощью написанных функций значения его периметра и площади.
 
 
-
+main.c 
 #include <stdio.h>
 #include "lib.h"
 
@@ -20,11 +20,12 @@ int main(){
     return 0;
 }
 
-
+mylib.h
 
 int perim(int side1, int side2, int side3);
 double area(int side1, int side2, int side3);
 
+mylib.c 
 
 #include <math.h>
 
