@@ -15,7 +15,7 @@ int main(){
     double s; 
     printf("Введите значения для a,b,c: ");
     scanf("%d %d %d", &a, &b, &c);
-    if(v(a,b,c)){
+    if(condition(a,b,c)){
         p=perim(a,b,c);
     printf("P=%d\n",p);
      s=area(a,b,c);
@@ -56,7 +56,7 @@ double area(int side1, int side2, int side3){
     return sm;
 }
     
-int v(int side1, int side2, int side3){
+int condition(int side1, int side2, int side3){
     if ((side1<side2+side3) & (side2<side1+side3) & (side3<side1+side2)){
     } 
     else 
