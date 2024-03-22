@@ -15,12 +15,22 @@ int main(){
     double s; 
     printf("Введите значения для a,b,c: ");
     scanf("%d %d %d", &a, &b, &c);
-    p=perim(a,b,c);
+    if(v(a,b,c)){
+        p=perim(a,b,c);
     printf("P=%d\n",p);
-    s=area(a,b,c);
+     s=area(a,b,c);
     printf("S=%lf",s);
+    
     return 0;
 }
+else
+{
+    printf("Такого треугольника не существует");
+}
+return 0;
+}
+
+
 
 mylib.h
 
@@ -44,6 +54,15 @@ double area(int side1, int side2, int side3){
     pol=(side1+side2+side3)/2; 
     sm=sqrt(pol*(pol-side1)*(pol-side2)*(pol-side3));
     return sm;
+}
+    
+int v(int side1, int side2, int side3){
+    if ((side1<side2+side3) & (side2<side1+side3) & (side3<side1+side2)){
+    } 
+    else 
+    {
+        return 0;
+    }
 }
     
     
