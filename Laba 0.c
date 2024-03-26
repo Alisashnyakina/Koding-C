@@ -1,35 +1,4 @@
-Лаба 1 
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 
-typedef struct point {
-	double x;
-	double y;
-} POINT;
-
-typedef struct poly {
-	int n;
-	POINT *p;
-} POLY;
-
-double dist (POINT p1, POINT p2)
- {
-  register double t;
-  return sqrt( ( t=(p2.x-p1.x) )*t + ( t=(p2.y-p1.y) )*t);
- }
- 
-double perimeter ( POLY p)
- {
-  double s;
-  s=0;
-    for (int i=0; i<p.n; i++)
-         s+= dist(p.p[(i+1)%p.n], p.p[i]);
-    return s;
-  }
-  
-
-double area (POLY p)
   {
   	double s;
   s=0;
