@@ -5,7 +5,6 @@
 Выдать на консоль значения полученного вектора.
 
 main.c 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
