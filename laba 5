@@ -80,9 +80,11 @@ int main() {
 
 
 m1m2.h
+
 double* f(double* m1, double* m2, int n, char math);
 
 m1m2.c
+
 #include "m1m2.h"
 #include <malloc.h>
 
