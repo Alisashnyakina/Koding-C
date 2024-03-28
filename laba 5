@@ -13,7 +13,7 @@ main.c
 
 int main() {
     int n;
-    printf("Введите размерность матриц: ");
+    printf("Введите размерность матрицы: ");
     scanf("%d", &n);
 
     double* m1 = (double*)malloc(n * n * sizeof(double));
