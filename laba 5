@@ -9,22 +9,22 @@ main.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
-#include "m1m2.h"
+#include "mylib.h"
 
 int main() {
     int n;
     printf("Введите размерность матрицы: ");
     scanf("%d", &n);
 
-    double* m1 = (double*)malloc(n * n * sizeof(double));
-    double* m2 = (double*)malloc(n * n * sizeof(double));
+    double* massive_1 = (double*)malloc(n * n * sizeof(double));
+    double* massive_2 = (double*)malloc(n * n * sizeof(double));
 
     for(int i = 0; i < n; i++) 
     {
         for(int j = 0; j < n; j++) 
         {
-            printf("m1[%d][%d] = ", i + 1, j + 1);
-            scanf("%lf", &m1[i * n + j]);
+            printf("massive_1[%d][%d] = ", i + 1, j + 1);
+            scanf("%lf", &massive_1[i * n + j]);
         }
     }
 
@@ -32,7 +32,7 @@ int main() {
     {
         for(int j = 0; j < n; j++) 
         {
-            printf("%lf ", m1[i * n + j]);
+            printf("%lf ", massive_1[i * n + j]);
         }
         printf("\n");
     }
@@ -41,8 +41,8 @@ int main() {
     {
         for(int j = 0; j < n; j++) 
         {
-            printf("m2[%d][%d] = ", i + 1, j + 1);
-            scanf("%lf", &m2[i * n + j]);
+            printf("massive_2[%d][%d] = ", i + 1, j + 1);
+            scanf("%lf", &massive_2[i * n + j]);
         }
     }
 
@@ -50,7 +50,7 @@ int main() {
     {
         for(int j = 0; j < n; j++) 
         {
-            printf("%lf ", m2[i * n + j]);
+            printf("%lf ", massive_2[i * n + j]);
         }
         printf("\n");
     }
@@ -59,7 +59,7 @@ int main() {
     printf("Введите операцию +, -, *: ");
     scanf(" %c", &math);
 
-    double* M = f(m1, m2, n, math);
+    double* M = f(massive_1, massive_2, n, math);
 
     for(int i = 0; i < n; i++) 
     {
@@ -71,24 +71,24 @@ int main() {
         printf("\n");
     }
 
-    free(m1);
-    free(m2);
+    free(massive_1);
+    free(massive_2);
     free(M);
 
     return 0;
 }
 
 
-m1m2.h
+mylib.h
 
-double* f(double* m1, double* m2, int n, char math);
+double* f(double* massive_1, double* massive_2, int n, char math);
 
-m1m2.c
+mylib.c
 
-#include "m1m2.h"
+#include "mylib.h"
 #include <malloc.h>
 
-double* f(double* m1, double* m2, int n, char math) 
+double* f(double* massive_1, double* massive_2, int n, char math) 
 {
     double* M = (double*)malloc(n * n * sizeof(double));
 
@@ -98,15 +98,15 @@ double* f(double* m1, double* m2, int n, char math)
         {
             if(math == '+') 
             {
-                M[i * n + j] = m1[i * n + j] + m2[i * n + j];
+                M[i * n + j] = massive_1[i * n + j] + massive_2[i * n + j];
             } 
             else if(math == '-') 
             {
-                M[i * n + j] = m1[i * n + j] - m2[i * n + j];
+                M[i * n + j] = massive_1[i * n + j] - massive_2[i * n + j];
             } 
             else if(math == '*') 
             {
-                M[i * n + j] = m1[i * n + j] * m2[i * n + j];
+                M[i * n + j] = massive_1[i * n + j] * massive_2[i * n + j];
             }
         }
     }
