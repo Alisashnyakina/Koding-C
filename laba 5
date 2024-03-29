@@ -58,24 +58,25 @@ int main() {
     printf("Введите операцию +, -, *: ");
     scanf(" %c", &math);
 
-    double* M = f(massive_1, massive_2, n, math);
+    double* massives = f(massive_1, massive_2, n, math);
 
     for(int i = 0; i < n; i++) 
     {
 
         for(int j = 0; j < n; j++) 
         {
-            printf("%lf ", M[i * n + j]);
+            printf("%lf ", massives[i * n + j]);
         }
         printf("\n");
     }
 
     free(massive_1);
     free(massive_2);
-    free(M);
+    free(massives);
 
     return 0;
 }
+
 
 
 mylib.h
@@ -88,7 +89,7 @@ mylib.c
 
 double* f(double* massive_1, double* massive_2, int n, char math) 
 {
-    double* M = (double*)malloc(n * n * sizeof(double));
+    double* massives = (double*)malloc(n * n * sizeof(double));
 
     for(int i = 0; i < n; i++) 
     {
@@ -96,18 +97,18 @@ double* f(double* massive_1, double* massive_2, int n, char math)
         {
             if(math == '+') 
             {
-                M[i * n + j] = massive_1[i * n + j] + massive_2[i * n + j];
+                massives[i * n + j] = massive_1[i * n + j] + massive_2[i * n + j];
             } 
             else if(math == '-') 
             {
-                M[i * n + j] = massive_1[i * n + j] - massive_2[i * n + j];
+                massives[i * n + j] = massive_1[i * n + j] - massive_2[i * n + j];
             } 
             else if(math == '*') 
             {
-                M[i * n + j] = massive_1[i * n + j] * massive_2[i * n + j];
+                massives[i * n + j] = massive_1[i * n + j] * massive_2[i * n + j];
             }
         }
     }
 
-    return M;
+    return massives;
 }
