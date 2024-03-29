@@ -79,7 +79,6 @@ int main() {
 
 
 mylib.h
-
 double* f(double* massive_1, double* massive_2, int n, char math);
 
 mylib.c
