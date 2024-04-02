@@ -9,8 +9,6 @@ double*-означает указатель на двойную переменн
 free()-освобождение памяти 
 
 
-
-
 main.c 
 #include <stdio.h>
 #include <stdlib.h>
