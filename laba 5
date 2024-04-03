@@ -88,7 +88,6 @@ mylib.h
 double* f(double* massive_1, double* massive_2, int n, char math);
 
 mylib.c
-
 #include "mylib.h"
 #include <malloc.h>
 
