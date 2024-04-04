@@ -19,7 +19,6 @@ int main() {
     while (fgets(line, sizeof(line), input_file)) {
         char year_str[5];
         strncpy(year_str, line + strlen(line) - 5, 4);
-        year_str[4] = '\0';
         int year = atoi(year_str);
 
         if (year > 1980) {
@@ -46,4 +45,30 @@ int main() {
     char i;
     fread(&i, sizeof(char), 1, input_file);
     fwrite(&i, sizeof(char), 1, input_file);
-
+Опять по-другому: 
+#include <stdio.h>
+ 
+int main(void)
+{
+    FILE *f1 = fopen("data1.txt", "r");   // файл на чтение
+    FILE *f2 = fopen("data2.txt", "w");   // файл на запись
+    char i[100];
+    if(!f1 || !f2)
+    {
+        printf("Error occured while opening file\n");
+    }
+    else
+    {
+        while((fgets(i, 100, f1))!=NULL)
+        {
+            // записываем строку в файл f2
+            fputs(i, f2);
+            
+        }
+    }
+     
+    fclose(f1);
+    fclose(f2);
+     
+    return 0;
+}
