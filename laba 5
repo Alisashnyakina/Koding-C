@@ -130,22 +130,22 @@ int main() {
     printf("Введите размерность матрицы: ");
     scanf("%d", &n);
 
-    double** massive_1;
-    double** massive_2;
+    double** m1;
+    double** m2;
     int i,j;
 
-   massive_1 = (double**)malloc(n*sizeof(double*));
+   m1 = (double**)malloc(n*sizeof(double*));
    for (int i=0; i<n;i++)
    {
-       massive_1[i]=(double*)malloc(n*sizeof(double));
+       m1[i]=(double*)malloc(n*sizeof(double));
    }
    
    for (int i=0;i<n;i++)
    {
        for (int j=0;j<n;j++)
        {
-           printf("massive_1[%d][%d]=", i+1,j+1);
-           scanf("%lf", &massive_1[i][j]);
+           printf("m1[%d][%d]=", i+1,j+1);
+           scanf("%lf", &m1[i][j]);
        }
    }
    
