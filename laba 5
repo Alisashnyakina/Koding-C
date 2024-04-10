@@ -240,15 +240,15 @@ double **f(double **m1, double **m2, int n, char math)
         {
             if(math == '+') 
             {
-                massives[i][j] = massive_1[i][j] + massive_2[i][j];
+                massives[i][j] = m1[i][j] + m2[i][j];
             } 
             else if(math == '-') 
             {
-                massives[i][j] = massive_1[i][j] - massive_2[i][j];
+                massives[i][j] = m1[i][j] - m2[i][j];
             } 
             else if(math == '*') 
             {
-                massives[i][j] = massive_1[i][j] * massive_2[i][j];
+                massives[i][j] = m1[i][j] * m2[i][j];
             }
         }
     }
