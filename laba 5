@@ -218,7 +218,7 @@ int main() {
 
 
 mylib.h
-double* f(double **massive_1, double **massive_2, int n, char math);
+double* f(double **m1, double **m2, int n, char math);
 
 mylib.c
 
@@ -226,7 +226,7 @@ mylib.c
 #include <malloc.h>
 #include "mylib.h"
 
-double **f(double **massive_1, double **massive_2, int n, char math) 
+double **f(double **m1, double **m2, int n, char math) 
 {
     double **massives = (double**)malloc(n * sizeof(double*));
 
