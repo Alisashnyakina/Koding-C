@@ -247,7 +247,9 @@ double **f(double **m1, double **m2, int n, char math)
             } 
             else if(math == '*') 
             {
-                m3[i][j] = m1[i][0] * m2[0][j] + m1[i][1] * m2[1][j];
+               m3[i][j] = 0;
+                for (int k = 0; k < n; k++) {
+                    m3[i][j] += m1[i][k] * m2[k][j];
             }
         }
     }
