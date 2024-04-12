@@ -258,11 +258,24 @@ double **f(double **m1, double **m2, int n, char math)
 }
 
 
-Начало для введения функции printmatrix: 
+Введение функции printmatrix: 
+main.c
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "mylib.h"
+
+void printmatrix(double** matrix, int n)
+{
+    for (int i=0;i<n;i++)
+    {
+        for (int j=0;j<n;j++)
+        {
+            printf("%lf", matrix[i][j]);
+        }
+        pfintf("\n");
+    }
+}
 
 
 int main() {
@@ -270,77 +283,106 @@ int main() {
     printf("Введите размерность матрицы: ");
     scanf("%d", &n);
 
-    double** massive_1;
-    double** massive_2;
+    double** m1;
+    double** m2;
     int i,j;
 
-
-   massive_1 = (double**)malloc(n*sizeof(double*));
+   m1 = (double**)malloc(n*sizeof(double*));
    for (int i=0; i<n;i++)
    {
-       for (int j=0;j<n;j++)
-       massive_1[i]=(double*)malloc(n*sizeof(double));
+       m1[i]=(double*)malloc(n*sizeof(double));
    }
-      massive_2 = (double**)malloc(n*sizeof(double*));
-   for (int i=0; i<n;i++)
-   {
-       for (int j=0;j<n;j++)
-       massive_2[i]=(double*)malloc(n*sizeof(double));
-   }  
-
-   for(int i=0;i<n;i++)
+   
+   for (int i=0;i<n;i++)
    {
        for (int j=0;j<n;j++)
        {
-           printf("%lf", massive_2[i][j]);
+           printf("m1[%d][%d]=", i+1,j+1);
+           scanf("%lf", &m1[i][j]);
        }
-       printf("\n");
    }
-   printf("Матрица 1: \n");
-   printmatrix(n,massive_1);
-   printf("Матрица 2: \n");
-   printmatrix(n,massive_2);
    
-   printf("Print massive1: \n");
+   printmatrix(m1,n);
+   
+   m2=(double**)malloc(n*sizeof(double*));
+   
+   for(int i=0;i<n;i++)
+   {
+       m2[i]=(double*)malloc(n * sizeof(double)); 
+   }
    for (int i=0;i<n;i++)
    {
-       for (int j=0;j<n;j++){
-            printf("%d", massive_1[i][j]); 
+       for (int j=0;j<n;j++)
+       {
+           printf("m2[%d][%d]=", i+1,j+1);
+           scanf("%lf", &m2[i][j]);
        }
-       printf("\n"); 
-    printf("Print massive2: \n); 
-    int printmatrix(n,massive_2);   
-       
+   }
+   
+   printmatrix(m2,n);
+   
     char math;
     printf("Введите операцию +, -, *: ");
-    scanf(" %c", &math); 
+    scanf(" %c", &math); //%c интерпретирует его числовое значение как символьное значение для отображения. 
 
-    double **massives = f(massive_1, massive_2, n, math);
+    double **m3 = f(m1, m2, n, math);
+
+    printmatrix(m3,n);
+    }
+    for(i=0;i<n;i++)
+    {
+        free(m1[i]);
+    }
+    for(i=0;i<n;i++)
+    {
+        free(m2[i]);
+    }
+    for(i=0;i<n;i++)
+    {
+        free(m3[i]);
+    }
+    free(m1);
+    free(m2);
+    free(m3);
+
+    return 0;
+}
+
+mylib.h
+double* f(double **m1, double **m2, int n, char math);
+
+mylib.c
+#include <stdlib.h>
+#include "mylib.h"
+
+double **f(double **m1, double **m2, int n, char math) 
+{
+    double **m3 = (double**)malloc(n * sizeof(double*));
 
     for(int i = 0; i < n; i++) 
     {
-
+        m3[i]= (double*)malloc(n*sizeof(double));
+    }
+    for(int i = 0; i < n; i++)
+    {
         for(int j = 0; j < n; j++) 
         {
-            printf("%lf ", massives[i][j]);
+            if(math == '+') 
+            {
+                m3[i][j] = m1[i][j] + m2[i][j];
+            } 
+            else if(math == '-') 
+            {
+                m3[i][j] = m1[i][j] - m2[i][j];
+            } 
+            else if(math == '*') 
+            {
+               m3[i][j] = 0;
+                for (int k = 0; k < n; k++) {
+                    m3[i][j] += m1[i][k] * m2[k][j];
+            }
         }
-        printf("\n");
     }
-    for(i=0;i<n;i++)
-    {
-        free(massive_1[i]);
-    }
-    for(i=0;i<n;i++)
-    {
-        free(massive_2[i]);
-    }
-    for(i=0;i<n;i++)
-    {
-        free(massives[i]);
-    }
-    free(massive_1);
-    free(massive_2);
-    free(massives);
 
-    return 0;
+    return m3;
 }
