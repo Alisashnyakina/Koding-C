@@ -248,7 +248,7 @@ double **f(double **m1, double **m2, int n, char math)
             } 
             else if(math == '*') 
             {
-                massives[i][j] = m1[i][j] * m2[i][j];
+                massives[i][j] = m1[i][0] * m2[0][j] + m1[i][1] * m2[1][j];
             }
         }
     }
