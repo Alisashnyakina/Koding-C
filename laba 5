@@ -495,3 +495,149 @@ double** f(double **m1, double **m2, int n, char math) {
     }
     return m3;
 }
+
+
+ИСПРАВЛЕННЫЙ ДВУМЕРНЫЙ МАССИВ:
+
+main.c
+#include <stdio.h>
+#include <stdlib.h>
+#include "mylib.h"
+
+
+int main(){
+    int n;
+    printf("Введите размер матрицы: ");
+    scanf("%d", &n);
+    
+    double **m1;
+    double **m2;
+    int i,j;
+    
+    m1=(double**)malloc(n*sizeof(double*));
+    for (int i=0;i<n;i++)
+    {
+        m1[i]=(double*)malloc(n*sizeof(double));
+    }
+    
+    for (int i=0;i<n;i++)
+    {
+        for (int j=0;j<n;j++)
+        {
+            printf("m1[%d][%d]=",i+1,j+1);
+            scanf("%lf", &m1[i][j]);
+        }
+    }
+    
+        for (int i=0;i<n;i++)
+        {
+            for (int j=0;j<n;j++)
+            {
+                printf("%lf", m1[i][j]);
+            }
+            printf("\n");
+        }
+        
+        
+        m2=(double**)malloc(n*sizeof(double*));
+        for (int i=0;i<n;i++)
+        {
+            m2[i]=(double*)malloc(n*sizeof(double));
+        }
+        for (int i=0;i<n;i++)
+        {
+            for (int j=0;j<n;j++)
+            {
+                printf("m2[%d][%d]=",i+1,j+1);
+                scanf("%lf", &m2[i][j]);
+            }
+        }
+        
+            for (int i=0;i<n;i++)
+        {
+            for (int j=0;j<n;j++)
+            {
+                printf("%lf", m2[i][j]);
+            }
+            printf("\n");
+        }
+        
+        
+        
+        char math; 
+        printf("Vvedite operaziu: ");
+        scanf(" %c", &math);
+         printf("Vvedite operaziu: %c \n", math);    
+        double **m3=f(m1,m2,n,math);
+        
+
+        for (int i=0;i<n;i++)
+        {
+            for (int j=0;j<n;j++)
+            {
+                printf(" %lf ", m3[i][j]);
+            }
+            printf("\n");
+        }
+        
+        for (int i=0;i<n;i++)
+        {
+            free(m1[i]);
+        }
+        for (int i=0;i<n;i++)
+        {
+            free(m2[i]);
+        }
+        for (int i=0;i<n;i++)
+        {
+            free(m3[i]);
+        }
+        free(m1);
+        free(m2);
+        free(m3);
+    
+    return 0;
+}
+
+mylib.h
+
+double **f(double **m1, double **m2, int n, char math);
+
+mylib.c
+
+#include <stdlib.h>
+#include <malloc.h>
+#include "mylib.h"
+
+double **f(double **m1, double **m2, int n, char math)
+{
+    double **m3=(double**)malloc(n*sizeof(double*));
+    for (int i=0;i<n;i++)
+    {
+        m3[i]=(double*)malloc(n*sizeof(double));
+    }
+    
+    for (int i=0;i<n;i++)
+    {
+        for (int j=0;j<n;j++)
+        {
+            if (math == '-')
+            {
+                m3[i][j]=m1[i][j]-m2[i][j];
+            }
+            else if (math == '+')
+            {
+                m3[i][j]=m1[i][j]+m2[i][j];
+            }
+            else if (math == '*')
+            {
+                m3[i][j]=0;
+                for (int k=0;k<n;k++)
+                {
+                    m3[i][j]+=m1[i][k]*m2[j][k];
+                }
+            }
+        }
+    }
+    return m3;
+}
