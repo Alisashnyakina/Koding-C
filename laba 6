@@ -15,7 +15,7 @@ int main() {
     f2 = fopen("output.txt", "w");
     
     char name[20]; 
-    char lastname[20];
+    char last_name[20];
     char middle_name[20];
     int year;
 
