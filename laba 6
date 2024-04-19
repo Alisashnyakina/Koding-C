@@ -42,4 +42,33 @@ int main() {
     return 0;
 }
 
+Изменённый вариант:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() 
+{
+    FILE *f1, *f2;
+    
+    f1 = fopen("input.txt", "r");
+    f2 = fopen("output.txt", "w");
+    
+    char first_name[20]; 
+    char last_name[20];
+    char middle_name[20];
+    int year;
+
+    while (fscanf(f1, "%s %s %s %d", last_name, first_name, middle_name, &year)==4) 
+    {
+        if (year > 1980) {
+            fprintf(f2, "%s %s %s %d\n", last_name, first_name, middle_name, year);
+        }
+    }
+
+    fclose(f1);
+    fclose(f2);
+
+    return 0;
+}
 
