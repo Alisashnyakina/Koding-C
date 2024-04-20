@@ -19,11 +19,11 @@ int main() {
     char middle_name[20];
     int year;
 
-    while (fscanf(f1, "%s %s %s %d", lastname, name, middle_name, &year)==4) 
+    while (fscanf(f1, "%s %s %s %d", last_name, name, middle_name, &year)==4) 
     {
         if (year > 1980) 
         {
-            fprintf(f2, "%s %s %s %d\n", lastname, name, middle_name, year);
+            fprintf(f2, "%s %s %s %d\n", last_name, name, middle_name, year);
         }
     }
 
