@@ -8,7 +8,8 @@
 
 #include <stdio.h>
 
-int main() {
+int main() 
+{
     FILE *f1, *f2;
     
     f1 = fopen("input.txt", "r");
@@ -19,7 +20,7 @@ int main() {
     char middle_name[20];
     int year;
 
-    while (fscanf(f1, "%s %s %s %d", last_name, name, middle_name, &year)==4) 
+    while (fscanf(f1, "%s %s %s %d", last_name, name, middle_name, &year) !=EOF) 
     {
         if (year > 1980) 
         {
@@ -52,3 +53,32 @@ int main() {
 4. ==4: Это условие проверяет, соответствует ли количество успешно считанных значений указанному формату (4 значения: фамилия, имя, отчество, год). 
 Если количество успешно считанных значений не равно 4, то цикл прекращается, так как файл закончился или формат данных не соответствует ожидаемому.
 
+Через fgets^
+
+#include <stdio.h>
+
+int main() {
+    FILE *f1, *f2;
+    
+    f1 = fopen("input.txt", "r");
+    f2 = fopen("output.txt", "w");
+    char line[100];
+    char name[20]; 
+    char last_name[20];
+    char middle_name[20];
+    int year;
+
+    while (fgets(line,sizeof(line),f1) != NULL) 
+    {
+        sscanf(line,"%s %s %s %d", last_name, name, middle_name, &year);
+        if (year > 1980) 
+        {
+            fprintf(f2, "%s %s %s %d\n", last_name, name, middle_name, year);
+        }
+    }
+
+    fclose(f1);
+    fclose(f2);
+
+    return 0;
+}
