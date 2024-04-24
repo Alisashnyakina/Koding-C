@@ -87,7 +87,7 @@ int main() {
     Human humans1[4];
     Human humans2[4];
 
-    printf("Enter the details of 4 humans (name, surname, birth year):\n");
+    printf("Введите имя, фамилию и год рождения для 4 человек:\n");
     for (int i = 0; i < 4; i++) {
         scanf("%s %s %d", humans1[i].name, humans1[i].surname, &humans1[i].birth_year);
     }
@@ -100,7 +100,7 @@ int main() {
         return 1;
     }
 
-    printf("Sorted list of humans by birth year:\n");
+    printf("Вывод:\n");
     fprintf(file, "Sorted list of humans by birth year:\n");
     for (int i = 0; i < 4; i++) {
         printf("%s %s %d\n", humans1[i].name, humans1[i].surname, humans1[i].birth_year);
