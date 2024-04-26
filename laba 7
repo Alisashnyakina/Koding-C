@@ -14,17 +14,17 @@ typedef struct
     int birth_year;
 }  humen;
 
-void sortHumansByYear(humen humans[], int size) 
+void sortyear(humen human[], int size) 
 {
     for (int i = 0; i < size - 1; i++) 
     {
         for (int j = 0; j < size - i - 1; j++) 
         {
-            if (humans[j].birth_year > humans[j + 1].birth_year) 
+            if (human[j].birth_year > human[j + 1].birth_year) 
             {
-                humen temp = humans[j];
-                humans[j] = humans[j + 1];
-                humans[j + 1] = temp;
+                humen temp = human[j];
+                human[j] = human[j + 1];
+                human[j + 1] = temp;
             }
         }
     }
@@ -32,16 +32,16 @@ void sortHumansByYear(humen humans[], int size)
 
 int main() 
 {
-     humen humans1[4];
-     humen humans2[4];
+     humen human1[4];
+     humen human2[4];
 
     printf("Введите имя, фамилию и год рождения для 4 человек:\n");
     for (int i = 0; i < 4; i++) 
     {
-        scanf("%s %s %d", humans1[i].name, humans1[i].surname, &humans1[i].birth_year);
+        scanf("%s %s %d", human1[i].name, human1[i].surname, &human1[i].birth_year);
     }
 
-    sortHumansByYear(humans1, 4);
+    sortyear(human1, 4);
 
     FILE *file = fopen("output.txt", "w");
   
@@ -49,8 +49,8 @@ int main()
     fprintf(file, "Список:\n");
     for (int i = 0; i < 4; i++) 
     {
-        printf("%s %s %d\n", humans1[i].name, humans1[i].surname, humans1[i].birth_year);
-        fprintf(file, "%s %s %d\n", humans1[i].name, humans1[i].surname, humans1[i].birth_year);
+        printf("%s %s %d\n", human1[i].name, human1[i].surname, human1[i].birth_year);
+        fprintf(file, "%s %s %d\n", human1[i].name, human1[i].surname, human1[i].birth_year);
     }
 
     fclose(file);
@@ -58,7 +58,8 @@ int main()
     return 0;
 }
 
-Этот код на языке программирования C содержит определение структуры Human, функцию sortHumansByYear для сортировки массива структур Human по году рождения, и функцию main, которая запрашивает у пользователя информацию о 4 человеках, сортирует их по году рождения и записывает отсортированный список в файл "output.txt".
+Этот код на языке программирования C содержит определение структуры Human, функцию sortHumansByYear для сортировки массива структур Human по году рождения, 
+и функцию main, которая запрашивает у пользователя информацию о 4 человеках, сортирует их по году рождения и записывает отсортированный список в файл "output.txt".
 
 1. Структура Human определяет данные о человеке, включая имя, фамилию и год рождения.
 
