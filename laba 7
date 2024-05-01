@@ -22,9 +22,9 @@ void sortbyyear(humen human[], int size)
         {
             if (human[j].birth_year > human[j + 1].birth_year) 
             {
-                humen temp = human[j];
+                humen list = human[j];
                 human[j] = human[j + 1];
-                human[j + 1] = temp;
+                human[j + 1] = list;
             }
         }
     }
