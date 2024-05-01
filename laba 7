@@ -14,7 +14,7 @@ typedef struct
     int birth_year;
 }  humen;
 
-void sortyear(humen human[], int size) 
+void sortbyyear(humen human[], int size) 
 {
     for (int i = 0; i < size - 1; i++) 
     {
@@ -41,7 +41,7 @@ int main()
         scanf("%s %s %d", human1[i].name, human1[i].surname, &human1[i].birth_year);
     }
 
-    sortyear(human1, 4);
+    sortbyyear(human1, 4);
 
     FILE *file = fopen("output.txt", "w");
   
@@ -57,5 +57,3 @@ int main()
     
     return 0;
 }
-
-
