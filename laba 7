@@ -30,9 +30,6 @@ void sortbyyear(humen human[], int size)
     }
 }
 
-
-
-
 int main() 
 {
      humen human1[4];
