@@ -14,17 +14,17 @@ typedef struct
     int birth_year;
 }  humen;
 
-void sortbyyear(humen human[], int size) 
+void sortbyyear(humen man[], int size) 
 {
     for (int i = 0; i < size - 1; i++) 
     {
         for (int j = 0; j < size - i - 1; j++) 
         {
-            if (human[j].birth_year > human[j + 1].birth_year) 
+            if (man[j].birth_year > man[j + 1].birth_year) 
             {
-                humen list = human[j];
-                human[j] = human[j + 1];
-                human[j + 1] = list;
+                humen list = man[j];
+                man[j] = man[j + 1];
+                man[j + 1] = list;
             }
         }
     }
@@ -32,16 +32,16 @@ void sortbyyear(humen human[], int size)
 
 int main() 
 {
-     humen human1[4];
-     humen human2[4];
+     humen man1[4];
+     humen man2[4];
 
     printf("Введите имя, фамилию и год рождения для 4 человек:\n");
     for (int i = 0; i < 4; i++) 
     {
-        scanf("%s %s %d", human1[i].name, human1[i].surname, &human1[i].birth_year);
+        scanf("%s %s %d", man1[i].name, man1[i].surname, &man1[i].birth_year);
     }
 
-    sortbyyear(human1, 4);
+    sortbyyear(man1, 4);
 
     FILE *file = fopen("output.txt", "w");
   
@@ -49,8 +49,8 @@ int main()
     fprintf(file, "Список:\n");
     for (int i = 0; i < 4; i++) 
     {
-        printf("%s %s %d\n", human1[i].name, human1[i].surname, human1[i].birth_year);
-        fprintf(file, "%s %s %d\n", human1[i].name, human1[i].surname, human1[i].birth_year);
+        printf("%s %s %d\n", man1[i].name, man1[i].surname, man1[i].birth_year);
+        fprintf(file, "%s %s %d\n", man1[i].name, man1[i].surname, man1[i].birth_year);
     }
 
     fclose(file);
