@@ -14,6 +14,11 @@ typedef struct
     int birth_year;
 }  humen;
 
+
+
+
+
+
 void sortbyyear(humen man[], int size) 
 {
     for (int i = 0; i < size - 1; i++) 
