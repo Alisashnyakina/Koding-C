@@ -31,8 +31,6 @@ void sortbyyear(humen man[], int size)
     }
 }
 
-
-
 int main() 
 {
      humen man1[4];
@@ -40,10 +38,6 @@ int main()
 
     printf("Введите имя, фамилию и год рождения для 4 человек:\n");
     for (int i = 0; i < 4; i++) 
-
-
-
-
     {
         scanf("%s %s %d", man1[i].name, man1[i].surname, &man1[i].birth_year);
     }
