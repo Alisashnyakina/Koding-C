@@ -98,3 +98,66 @@ int main() {
 
     return 0;
 }
+
+
+Другой вариант: 
+
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define MAX_SIZE 50
+
+typedef struct {
+    char name[MAX_SIZE];
+    char surname[MAX_SIZE];
+    int birth_year;
+    char gender;
+    float height;
+} Person;
+
+int compare(const void *a, const void *b) {
+    return strcmp(((Person*)a)->name, ((Person*)b)->name);
+}
+
+void printPersons(Person persons[], int n) {
+    for(int i = 0; i < n; i++) {
+        printf("%s %s, %d, %c, %.2f\n", persons[i].name, persons[i].surname, persons[i].birth_year, persons[i].gender, persons[i].height);
+    }
+}
+
+int main() {
+    FILE *file;
+    file = fopen("people.txt", "w");
+
+    if (file == NULL) {
+        printf("Ошибка в открытии файла.\n");
+        return -1;
+    }
+
+    Person people[] = {
+        {"Дмитрий", "Образцов", 2001, 'M', 1.80},
+        {"Александр", "Пупкин", 2002, 'M', 1.60},
+        {"Карина", "Волкова", 2005, 'F', 1.75}
+    };
+
+    for(int i = 0; i < sizeof(people)/sizeof(people[0]); i++) {
+        fprintf(file, "%s %s %d %c %.2f\n", people[i].name, people[i].surname, people[i].birth_year, people[i].gender, people[i].height);
+    }
+
+    fclose(file);
+
+    char order[MAX_SIZE];
+    printf("Введите данные для сортировки данных: ");
+    scanf("%s", order);
+
+    if (strcmp(order, "имя") == 0) {
+        qsort(people, sizeof(people)/sizeof(people[0]), sizeof(Person), compare);
+    }
+
+    printf("Ordered list:\n");
+    printPersons(people, sizeof(people)/sizeof(people[0]));
+
+    return 0;
+}
