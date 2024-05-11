@@ -99,8 +99,16 @@ int main() {
 }
 
 
-Другой вариант: 
 
+
+
+
+
+
+
+
+
+Другой вариант: 
 
 #include <stdio.h>
 #include <string.h>
