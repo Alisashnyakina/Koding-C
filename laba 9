@@ -45,6 +45,6 @@ int main(void){
     setlocale(LC_ALL, "Russia");
  
     fgets(s, sizeof(s), stdin);
-    printf("answer: %lg\n", calc(s));
+    printf("Ответ: %lg\n", calc(s));
     return 0;
 }
