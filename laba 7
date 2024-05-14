@@ -45,7 +45,14 @@ int main()
     sortbyyear(man1, 4);
 
     FILE *file = fopen("output.txt", "w");
-  
+
+
+
+
+
+
+
+
     printf("Список:\n");
     fprintf(file, "Список:\n");
     for (int i = 0; i < 4; i++) 
