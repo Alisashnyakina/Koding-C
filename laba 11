@@ -1,6 +1,51 @@
 Создать в отдельном модуле функции с переменным количеством аргументов, которая вычисляет их сумму, максимум, минимум, среднее арифметическое.
 
 
-
-
-бббб
+#include <stdio.h>
+#include <stdarg.h>    // to access variable length arguments
+ 
+/**
+* @brief Calculate the sum of variable number of arguments passed to function.
+*
+* @param num - Total number of variable arguments.
+* @param ... - variable argument list
+* @return int  - sum of input numbers
+*/
+ 
+int add(int num, ...)
+{
+    int i, sum = 0;
+    // declare the 'va_list' variable
+    va_list args_list;
+ 
+    // Initialize the `va_list' type variable
+    va_start(args_list, num);
+ 
+    // The 'num' specifies the number of variable arguments passed.
+    // Loop until we reach 'num' and get each value using 'va_arg'
+    for(i = 0; i<num; i++)
+    {
+        // get the variable argument value using 'va_arg'
+        sum = sum + va_arg(args_list, int);
+    }
+ 
+    // finished the operation. set the 'args_list' to NULL.
+    va_end(args_list);
+ 
+    return sum;
+}
+ 
+int main()
+{
+ 
+    // call the 'add' function with 3 arguments - 1 fixed, 2 variable arguments  
+    printf("Result : %d \n", add(2, 20, 30));
+ 
+    // call the 'add' function with 5 arguments - 1 fixed, 4 variable arguments
+    printf("Result : %d \n", add(4, 20, 30, 80, 70));
+ 
+    // call the 'add' function with 11 arguments - 1 fixed, 10 variable arguments
+    printf("Result : %d \n", add(10, 20, 30, 80, 70, 4, 8, 3, 40, 71, 23));
+ 
+    return 0;
+}
