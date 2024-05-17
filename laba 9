@@ -3,11 +3,6 @@
 Для разбора входной строки использовать функцию strok.
 
 
-
-
-
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
