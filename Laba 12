@@ -6,131 +6,98 @@
 
 
 
-Просто кадендарь:
-
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
-#define TRUE    1
-#define FALSE   0
-#define KGRN  "\x1B[32m"
-#define RED   "\x1B[31m"
-#define YEL   "\x1B[33m"
-#define RESET "\x1B[0m"
-
-int days_in_month[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
-int today_year = -1, today_month = -1, today_day = -1;
-
-char *months[]=
-{
-	" ",
-	"January",
-	"February",
-	"March",
-	"April",
-	"May",
-	"June",
-	"July",
-	"August",
-	"September",
-	"October",
-	"November",
-	"December"
-};
-
-
-int inputyear(void)
-{
-	int year;
-
-	time_t t = time(NULL);
-    struct tm tm = *localtime(&t);
-    today_year = tm.tm_year + 1900;
-    today_month = tm.tm_mon + 1;
-    today_day = tm.tm_mday;
-	
-	year = today_year;
-	printf("Today DD/MM/YYYY: %d/%d/%d\n", today_day, today_month, today_year);
-	return year;
+int is_leap_year(int year) {
+    if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
-int determinedaycode(int year)
-{
-	int daycode;
-	int d1, d2, d3;
-	
-	d1 = (year - 1.)/ 4.0;
-	d2 = (year - 1.)/ 100.;
-	d3 = (year - 1.)/ 400.;
-	daycode = (year + d1 - d2 + d3) %7;
-	return daycode;
+int get_day_of_week(int year, int month, int day) {
+    int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
+    if (month < 3) {
+        year -= 1;
+    }
+    return (year + year/4 - year/100 + year/400 + t[month-1] + day) % 7;
 }
 
-
-int determineleapyear(int year)
-{
-	if(year% 4 == FALSE && year%100 != FALSE || year%400 == FALSE)
-	{
-		days_in_month[2] = 29;
-		return TRUE;
-	}
-	else
-	{
-		days_in_month[2] = 28;
-		return FALSE;
-	}
+void print_calendar(int year, int month) {
+    int days_in_month[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (is_leap_year(year)) {
+        days_in_month[2] = 29;
+    }
+    
+    struct tm t = {.tm_year = year - 1900, .tm_mon = month - 1, .tm_mday = 1};
+    mktime(&t);
+    int day_of_week = t.tm_wday;
+    
+    printf("\n   %d Год %dМесяц\n", year, month);
+    printf("Пн Вт Ср Чт Пт Сб Вс\n");
+    
+    for (int i = 0; i < day_of_week; i++) {
+        printf("   ");
+    }
+    
+    for (int day = 1; day <= days_in_month[month]; day++) {
+        printf("%3d", day);
+        if ((day + day_of_week) % 7 == 0) {
+            printf("\n");
+        }
+    }
+    printf("\n\n");
 }
 
-void calendar(int year, int daycode)
-{
-	int month, day;
-	for ( month = 1; month <= 12; month++ )
-	{
-		printf("\n\n%s", months[month]);
-		printf("\n-----------------------------------");
-		printf("\nSun  Mon  Tue  Wed  Thu  Fri  Sat\n" );
-		
-		// Correct the position for the first date
-		for ( day = 1; day <= 1 + daycode * 5; day++ )
-		{
-			printf(" ");
-		}
-		
-		// Print all the dates for one month
-		for ( day = 1; day <= days_in_month[month]; day++ )
-		{
-			if(month < today_month)
-				printf("%s%2d%s", RED, day, RESET );
-			else if(month == today_month && day < today_day)
-				printf("%s%2d%s", RED, day, RESET );
-			else if(today_day == day && today_month == month)
-				printf("%s%2d%s", KGRN, day, RESET );
-			else
-				printf("%s%2d%s", YEL, day, RESET );
-			
-			// Is day before Sat? Else start next line Sun.
-			if ( ( day + daycode ) % 7 > 0 )
-				printf("   " );
-			else
-				printf("\n " );
-		}
-		// Set position for next month
-		daycode = ( daycode + days_in_month[month] ) % 7;
-	}
-}
-
-int main(int argc, char** argv)
-{
-	int year, daycode, leapyear;
-
-	if(argc > 1)
-		year = atoi(argv[1]);	
-	else
-		year = inputyear();
-
-	printf("CALENDER OF YEAR %d", year);
-	daycode = determinedaycode(year);
-	determineleapyear(year);
-	calendar(year, daycode);
-	printf("\n");
+int main() {
+    int year, month, day;
+    char input[10];
+    time_t now;
+    time(&now);
+    struct tm *local = localtime(&now);
+    
+    printf("Введите дату (гггг.мм.дд, гггг.мм, гггг, now): ");
+    scanf("%s", input);
+    
+    if (sscanf(input, "%d.%d.%d", &year, &month, &day) == 3) {
+        printf("День недели: ");
+        switch (get_day_of_week(year, month, day)) {
+            case 0:
+                printf("Воскресенье\n");
+                break;
+            case 1:
+                printf("Понедельник\n");
+                break;
+            case 2:
+                printf("Вторник\n");
+                break;
+            case 3:
+                printf("Среда\n");
+                break;
+            case 4:
+                printf("Четверг\n");
+                break;
+            case 5:
+                printf("Пятница\n");
+                break;
+            case 6:
+                printf("Суббота\n");
+                break;
+        }
+    } else if (sscanf(input, "%d.%d", &year, &month) == 2) {
+        print_calendar(year, month);
+    } else if (sscanf(input, "%d", &year) == 1) {
+        for (int i = 1; i <= 12; i++) {
+            print_calendar(year, i);
+        }
+    } else if (strcmp(input, "now") == 0) {
+        printf("Текущая дата: %d Год %d Месяц %d День\n", local->tm_year + 1900, local->tm_mon + 1, local->tm_mday);
+    } else {
+        printf("Неверный формат даты\n");
+    }
+    
+    return 0;
 }
