@@ -41,8 +41,6 @@ double calc(const char* s){
  
 int main(void){
     char s[128];
-    setlocale(LC_ALL, "Russia");
- 
     fgets(s, sizeof(s), stdin);
     printf("Ответ: %lg\n", calc(s));
     return 0;
