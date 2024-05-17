@@ -2,13 +2,12 @@
 У пользователя запрашивается выражение, например, "-123.5 + 4 - 456+56", программа должна решить выражение. 
 Для разбора входной строки использовать функцию strok.
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <locale.h>
  
-double calc(const char* s){
+double calculate(const char* s){
     char*  p, c;
     double n, sum = strtod(s, &p);
     if(s == p)
@@ -42,6 +41,6 @@ double calc(const char* s){
 int main(void){
     char s[128];
     fgets(s, sizeof(s), stdin);
-    printf("Ответ: %lg\n", calc(s));
+    printf("Ответ: %lg\n", calculate(s));
     return 0;
 }
