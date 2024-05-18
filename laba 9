@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include <locale.h>
+
  
 double calculate(const char* s){
     char*  p, c;
