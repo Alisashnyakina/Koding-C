@@ -5,6 +5,11 @@
 Нужно вывести и в файл и в консоль 
 
 
+
+
+
+
+
 #include <stdio.h>
 #include <string.h>
 
