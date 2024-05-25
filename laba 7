@@ -135,73 +135,62 @@ int main()
 
 Без ограничения в 4 человека: 
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
-typedef struct 
-{
-    char name[50];
-    char surname[50];
+struct human {
+    char name[256];
+    char surname[256];
     int birth_year;
-} humen;
+};
 
-void sortbyyear(humen man[], int size) 
-{
-    for (int i = 0; i < size - 1; i++) 
-    {
-        for (int j = 0; j < size - i - 1; j++) 
-        {
-            if (man[j].birth_year > man[j + 1].birth_year) 
-            {
-                humen list = man[j];
-                man[j] = man[j + 1];
-                man[j + 1] = list;
+void sortbyyear(struct human arr[], int size) {
+    int i, j;
+    struct human temp;
+
+    for (i = 0; i < size - 1; i++) {
+        for (j = 0; j < size - i - 1; j++) {
+            if (arr[j].birth_year > arr[j + 1].birth_year) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
         }
     }
 }
 
-int main() 
-{
+int main() {
     FILE *file = fopen("input.txt", "r");
+    int n = 0;
+    char line[256];
 
-    if (file == NULL) 
-    {
-        printf("Ошибка открытия файла.\n");
-        return 1;
+ 
+    while (fgets(line, sizeof(line), file)) {
+        n++;
     }
+    
+    rewind(file);
+    struct human *man1 = (struct human*)malloc(n * sizeof(struct human));
 
-    humen *man1 = NULL;
-    int size = 0;
-
-    while (!feof(file)) 
-    {
-        humen new_humen;
-        if (fscanf(file, "%s %s %d", new_humen.name, new_humen.surname, &new_humen.birth_year) == 3) 
-        {
-            size++;
-            man1 = (humen *)realloc(man1, size * sizeof(humen));
-            man1[size - 1] = new_humen;
-        }
+    for (int i = 0; i < n; i++) {
+        fscanf(file, "%s %s %d", man1[i].name, man1[i].surname, &man1[i].birth_year);
+        printf("%s %s %d\n", man1[i].name, man1[i].surname, man1[i].birth_year);
     }
 
     fclose(file);
 
-    sortbyyear(man1, size);
+    sortbyyear(man1, n);
 
     file = fopen("output.txt", "w");
 
-    printf("Отсортированный список:\n");
-    fprintf(file, "Отсортированный список:\n");
-    for (int i = 0; i < size; i++) 
-    {
+    for (int i = 0; i < n; i++) {
         printf("%s %s %d\n", man1[i].name, man1[i].surname, man1[i].birth_year);
         fprintf(file, "%s %s %d\n", man1[i].name, man1[i].surname, man1[i].birth_year);
     }
 
     fclose(file);
 
-    free(man1); // Освобождаем выделенную память
+    free(man1); 
 
     return 0;
 }
