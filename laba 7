@@ -62,21 +62,146 @@ int main()
 
 
 Данный код написан на языке программирования C и выполняет следующие действия:
-
 1. Для начала определяется структура humen, которая содержит поля для имени (name), фамилии (surname) и года рождения (birth_year) человека.
-
 2. Затем определяется функция sortbyyear, которая принимает массив структур humen и его размер. Эта функция сортирует массив по возрастанию года рождения.
-
 3. В функции main создаются два массива структур man1 и man2, каждый из которых содержит место для 4 человек.
-
 4. Пользователю предлагается ввести имя, фамилию и год рождения для 4 человек при помощи цикла for и функции scanf.
-
 5. Затем вызывается функция sortbyyear, чтобы отсортировать массив man1 по году рождения.
-
 6. Открывается файл "output.txt" для записи результатов программы.
-
 7. Происходит вывод на экран и запись в файл списка людей из массива man1 с отсортированными данными.
-
 8. Файл закрывается и программа завершается.
-
 Таким образом, данный код считывает данные о людях, сортирует их по году рождения и записывает отсортированный список в файл "output.txt".
+
+
+Считывает данные из файла: 
+#include <stdio.h>
+#include <string.h>
+
+typedef struct 
+{
+    char name[50];
+    char surname[50];
+    int birth_year;
+} humen;
+
+void sortbyyear(humen man[], int size) 
+{
+    for (int i = 0; i < size - 1; i++) 
+    {
+        for (int j = 0; j < size - i - 1; j++) 
+        {
+            if (man[j].birth_year > man[j + 1].birth_year) 
+            {
+                humen list = man[j];
+                man[j] = man[j + 1];
+                man[j + 1] = list;
+            }
+        }
+    }
+}
+
+int main() 
+{
+    humen man1[4];
+
+    FILE *file = fopen("input.txt", "r");
+
+    printf("Считанные данные:\n");
+    for (int i = 0; i < 4; i++) 
+    {
+        fscanf(file, "%s %s %d", man1[i].name, man1[i].surname, &man1[i].birth_year);
+        printf("%s %s %d\n", man1[i].name, man1[i].surname, man1[i].birth_year);
+    }
+
+    fclose(file);
+
+    sortbyyear(man1, 4);
+
+    file = fopen("output.txt", "w");
+
+    printf("Отсортированный список:\n");
+    fprintf(file, "Отсортированный список:\n");
+    for (int i = 0; i < 4; i++) 
+    {
+        printf("%s %s %d\n", man1[i].name, man1[i].surname, man1[i].birth_year);
+        fprintf(file, "%s %s %d\n", man1[i].name, man1[i].surname, man1[i].birth_year);
+    }
+
+    fclose(file);
+    
+    return 0;
+}
+
+
+Без ограничения в 4 человека: 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct 
+{
+    char name[50];
+    char surname[50];
+    int birth_year;
+} humen;
+
+void sortbyyear(humen man[], int size) 
+{
+    for (int i = 0; i < size - 1; i++) 
+    {
+        for (int j = 0; j < size - i - 1; j++) 
+        {
+            if (man[j].birth_year > man[j + 1].birth_year) 
+            {
+                humen list = man[j];
+                man[j] = man[j + 1];
+                man[j + 1] = list;
+            }
+        }
+    }
+}
+
+int main() 
+{
+    FILE *file = fopen("input.txt", "r");
+
+    if (file == NULL) 
+    {
+        printf("Ошибка открытия файла.\n");
+        return 1;
+    }
+
+    humen *man1 = NULL;
+    int size = 0;
+
+    while (!feof(file)) 
+    {
+        humen new_humen;
+        if (fscanf(file, "%s %s %d", new_humen.name, new_humen.surname, &new_humen.birth_year) == 3) 
+        {
+            size++;
+            man1 = (humen *)realloc(man1, size * sizeof(humen));
+            man1[size - 1] = new_humen;
+        }
+    }
+
+    fclose(file);
+
+    sortbyyear(man1, size);
+
+    file = fopen("output.txt", "w");
+
+    printf("Отсортированный список:\n");
+    fprintf(file, "Отсортированный список:\n");
+    for (int i = 0; i < size; i++) 
+    {
+        printf("%s %s %d\n", man1[i].name, man1[i].surname, man1[i].birth_year);
+        fprintf(file, "%s %s %d\n", man1[i].name, man1[i].surname, man1[i].birth_year);
+    }
+
+    fclose(file);
+
+    free(man1); // Освобождаем выделенную память
+
+    return 0;
+}
