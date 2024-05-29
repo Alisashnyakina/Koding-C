@@ -1,0 +1,126 @@
+Первый код 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+ 
+int main(int argc, char *argv[]) {
+    time_t t1,t0;
+    long unsigned int i;
+    float diftime;
+    
+    t0=time (NULL);
+    
+    for (i=0; i<1500000000L; i++);
+    
+    
+    t1=time (NULL);
+    
+    diftime = difftime(t1, t0);
+    printf("Need time difftime = %f\n",diftime);
+    
+    return 0;
+}
+
+
+Второй код 
+#include <time.h>
+
+int main() {
+    clock_t t_start,t_end;
+    t_start = clock();
+    float duration;
+    int i,j;
+    int N;
+    int **m1, **m2, **m3;
+    //----------------------------------------------
+    
+    printf("Введите размер матрицы: ");
+    scanf("%d", &N);
+    
+    m1=(int**)malloc(N*sizeof(int*));
+    for(i=0;i<N;i++)
+    {
+        m1[i]=(int*)malloc(N*sizeof(int));
+        
+    }
+    
+    m2=(int*)malloc(N*sizeof(int*));
+    for(i=0;i<N;i++)
+    {m2[i]=(int*)malloc(N*sizeof(int));}
+    
+    //Fill matrix 1
+    
+    printf("Введите значения для m1: ");
+    for (i=0;i<N;i++){
+        for(j=0;j<N;j++){
+            scanf("%d", &m2[i][j]);
+        }
+    }
+    
+    
+    //Fill matrix 2
+     printf("Введите значения для m2: ");
+     for (i=0;i<N;i++){
+         for(j=0;j<N;j++){
+             scanf("%d", &m2[i][j]);
+         }
+     }
+    
+    //print matrix 1 
+    printf("Напишите матрицу m1: \n");
+    printmatrix(N, m1);
+    
+    //print matrix m2
+    printf("Напишите матрицу m2: \n");
+    
+    //summ m1 and m2
+    printf("сумма m1 и m2 это: \n");
+    m3=summ(N,m1,m2);
+    printmatrix(N, m3);
+    
+    for (i=0;i<N){
+        free(m1[i]);
+        free(m2[i]);
+        free(m3[i]);
+    }
+    free(m1);
+    free(m2);
+    free(m3);
+    
+    //-----------------------------------------------
+    
+    duration=(clock() - t_start) / (double) CLOCKS_PER_SEC;
+    printf("Need time duration = %f", duration);
+    return 0;
+
+}
+
+
+
+
+
+Третий код 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int** summ(int size, int **m1, int **m2){
+    int **result;
+    int i,j;
+    result=(int**)malloc(size*sizeof(int*));
+    for(i=0;i<size;i++)
+    {result[i]=(int*)malloc(size*sizeof(int));}
+    
+    for (i=0;i<size;i++){
+        for(j=0;j<size;j++){
+            result[i][j]=m1[i][j]+m2[i][j];
+        }
+    }
+    return result;
+}
+
+
+void printmatrix(int size, int **matrix){
+    int i,j;
+    
+}
