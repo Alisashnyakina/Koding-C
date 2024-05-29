@@ -5,6 +5,9 @@
 
 
 
+
+
+
 #include <stdio.h>
 int main(){
     double massive [3][3];
