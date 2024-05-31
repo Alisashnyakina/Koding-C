@@ -9,6 +9,11 @@
 Проверка на  существованание треугольника: a+b>c, a+c>b, b+c>a,
 
 
+
+
+
+
+
 main.c 
 #include <stdio.h>
 #include "mylib.h"
