@@ -11,10 +11,6 @@ void- функция не возвращает значение. Это озна
 
 
 
-
-
-
-
 main.c 
 #include <stdio.h>
 #include <stdlib.h>
